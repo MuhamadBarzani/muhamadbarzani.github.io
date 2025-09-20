@@ -8,9 +8,10 @@
 </head>
 <body>
   <header>
-    <div class="container">
+    <div class="container header-container">
       <h1>Muhamad Barzani</h1>
       <p>Software Engineer | Frontend Developer | 3D Designer</p>
+      <button id="darkModeToggle">🌙 Dark Mode</button>
     </div>
   </header>
 
@@ -66,8 +67,9 @@
       <h2>Socials</h2>
       <div class="socials">
         <a href="https://github.com/MuhamadBarzani" target="_blank" class="social-link github">GitHub</a>
-        <a href="https://www.linkedin.com/in/muhamad-barzani" target="_blank" class="social-link linkedin">LinkedIn</a>
-        <a href="https://www.instagram.com/muhamad.barzanni" target="_blank" class="social-link instagram">Instagram</a>
+        <a href="https://www.linkedin.com" target="_blank" class="social-link linkedin">LinkedIn</a>
+        <a href="https://www.instagram.com" target="_blank" class="social-link instagram">Instagram</a>
+        <a href="https://twitter.com" target="_blank" class="social-link twitter">Twitter</a>
       </div>
     </section>
   </main>
@@ -77,5 +79,17 @@
       <p>&copy; 2025 Muhamad Barzani. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    const toggleButton = document.getElementById('darkModeToggle');
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if(document.body.classList.contains('dark-mode')) {
+        toggleButton.textContent = '☀️ Light Mode';
+      } else {
+        toggleButton.textContent = '🌙 Dark Mode';
+      }
+    });
+  </script>
 </body>
 </html>

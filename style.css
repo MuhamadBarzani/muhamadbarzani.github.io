@@ -177,3 +177,70 @@ footer {
     align-items: center;
   }
 }
+
+/* Existing styles ... */
+
+header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2.5rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+#darkModeToggle {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  background-color: #fff;
+  color: #667eea;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#darkModeToggle:hover {
+  background-color: #f0f0f0;
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode header {
+  background: linear-gradient(135deg, #3333aa 0%, #551a8b 100%);
+}
+
+body.dark-mode .section {
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .contact-item,
+body.dark-mode .highlight-card {
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .skills .skill-tag {
+  background-color: #4444cc;
+}
+
+body.dark-mode .social-link.github { background: #555; }
+body.dark-mode .social-link.linkedin { background: #005582; }
+body.dark-mode .social-link.instagram { background: #c13584; }
+body.dark-mode .social-link.twitter { background: #0d95e8; }
+
+body.dark-mode footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+}
