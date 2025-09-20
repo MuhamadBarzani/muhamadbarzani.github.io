@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Muhamad Barzani - Personal Website</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <header>
     <div class="container header-container">
-      <h1>Muhamad Barzani</h1>
-      <p>Software Engineer | Frontend Developer | 3D Designer</p>
-      <button id="darkModeToggle">🌙 Dark Mode</button>
+      <div class="header-top">
+        <h1>Muhamad Barzani</h1>
+        <p class="tagline">Software Engineer | Frontend Developer | 3D Designer</p>
+      </div>
+
+      <div class="header-socials" aria-label="Social links">
+        <a href="https://github.com/MuhamadBarzani" target="_blank" class="social-link github" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank" class="social-link linkedin" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" class="social-link instagram" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" class="social-link twitter" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+
+      <div class="header-actions">
+        <button id="darkModeToggle" aria-pressed="false">🌙 Dark Mode</button>
+      </div>
     </div>
   </header>
 
@@ -21,11 +41,12 @@
       <h2>About Me</h2>
       <div class="about-content">
         <div class="profile-image">
-          <img src="assets/image.png" alt="Muhamad Barzani Photo">
+          <img src="assets/image.png" alt="Muhamad Barzani Photo" />
         </div>
         <div>
           <p>Hello! I'm Muhamad Barzani, a creative and detail-oriented software engineer with experience in <strong>Flutter</strong>, <strong>Java</strong>, <strong>C++</strong>, and <strong>front-end web development</strong>. I also have a background in <strong>3D graphics design</strong>, from commercial projects to environment modeling.</p>
           <p>I'm passionate about technology, problem-solving, and continuous learning. I enjoy building apps, designing databases, and exploring new technologies that push creativity and performance forward.</p>
+          <p>This website is my personal space where I showcase my work, skills, and interests. Feel free to explore and connect with me!</p>
         </div>
       </div>
     </section>
@@ -62,24 +83,6 @@
         </div>
       </div>
     </section>
-
-    <section class="section">
-      <h2>Socials</h2>
-      <div class="socials">
-        <a href="https://github.com/MuhamadBarzani" target="_blank" class="social-link github">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com" target="_blank" class="social-link linkedin">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://www.instagram.com" target="_blank" class="social-link instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://twitter.com" target="_blank" class="social-link twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -89,14 +92,31 @@
   </footer>
 
   <script>
-    const toggleButton = document.getElementById('darkModeToggle');
-    toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      if(document.body.classList.contains('dark-mode')) {
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleButton = document.getElementById('darkModeToggle');
+      const stored = localStorage.getItem('theme');
+      if (stored === 'dark') {
+        document.body.classList.add('dark-mode');
         toggleButton.textContent = '☀️ Light Mode';
+        toggleButton.setAttribute('aria-pressed', 'true');
       } else {
+        document.body.classList.remove('dark-mode');
         toggleButton.textContent = '🌙 Dark Mode';
+        toggleButton.setAttribute('aria-pressed', 'false');
       }
+
+      toggleButton.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark-mode');
+        if (isDark) {
+          localStorage.setItem('theme', 'dark');
+          toggleButton.textContent = '☀️ Light Mode';
+          toggleButton.setAttribute('aria-pressed', 'true');
+        } else {
+          localStorage.setItem('theme', 'light');
+          toggleButton.textContent = '🌙 Dark Mode';
+          toggleButton.setAttribute('aria-pressed', 'false');
+        }
+      });
     });
   </script>
 </body>
