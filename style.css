@@ -9,6 +9,7 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #f4f4f4;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -24,14 +25,27 @@ header {
   text-align: center;
 }
 
-header h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-header p {
-  font-size: 1.2rem;
-  opacity: 0.95;
+#darkModeToggle {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  background-color: #fff;
+  color: #667eea;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#darkModeToggle:hover {
+  background-color: #f0f0f0;
 }
 
 .section {
@@ -40,6 +54,7 @@ header p {
   padding: 2.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .section h2 {
@@ -84,7 +99,7 @@ header p {
   padding: 1rem;
   border-radius: 8px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .contact-item:hover {
@@ -120,19 +135,21 @@ header p {
 
 .socials {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
   justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .social-link {
-  padding: 0.7rem 1.5rem;
-  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  border-radius: 50%;
   color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .social-link.github { background: #333; }
@@ -141,8 +158,8 @@ header p {
 .social-link.twitter { background: #1da1f2; }
 
 .social-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 footer {
@@ -152,63 +169,19 @@ footer {
   padding: 2rem 0;
   margin-top: 2rem;
   font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2.2rem;
-  }
-
-  .about-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .profile-image {
-    margin-bottom: 1rem;
-  }
-
-  .contact-info {
-    grid-template-columns: 1fr;
-  }
-
-  .socials {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-/* Existing styles ... */
-
-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 2.5rem 0;
-  text-align: center;
-  position: relative;
-}
-
-.header-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-#darkModeToggle {
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  background-color: #fff;
-  color: #667eea;
-  font-weight: bold;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-#darkModeToggle:hover {
-  background-color: #f0f0f0;
+@media (max-width: 768px) {
+  header h1 { font-size: 2.2rem; }
+  .about-content { grid-template-columns: 1fr; text-align: center; }
+  .profile-image { margin-bottom: 1rem; }
+  .contact-info { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .socials { gap: 1rem; }
+  .social-link { width: 50px; height: 50px; font-size: 1.2rem; }
 }
 
 /* Dark Mode */
@@ -221,26 +194,13 @@ body.dark-mode header {
   background: linear-gradient(135deg, #3333aa 0%, #551a8b 100%);
 }
 
-body.dark-mode .section {
-  background-color: #1e1e1e;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-body.dark-mode .contact-item,
-body.dark-mode .highlight-card {
-  background-color: #2a2a2a;
-}
-
-body.dark-mode .skills .skill-tag {
-  background-color: #4444cc;
-}
+body.dark-mode .section { background-color: #1e1e1e; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+body.dark-mode .contact-item { background-color: #2a2a2a; }
+body.dark-mode .skills .skill-tag { background-color: #4444cc; }
 
 body.dark-mode .social-link.github { background: #555; }
 body.dark-mode .social-link.linkedin { background: #005582; }
 body.dark-mode .social-link.instagram { background: #c13584; }
 body.dark-mode .social-link.twitter { background: #0d95e8; }
 
-body.dark-mode footer {
-  background-color: #1a1a1a;
-  color: #ccc;
-}
+body.dark-mode footer { background-color: #1a1a1a; color: #ccc; }
